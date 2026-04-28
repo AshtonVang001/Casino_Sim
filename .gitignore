@@ -1,0 +1,64 @@
+# ----------------------
+# Python bytecode / cache
+# ----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ----------------------
+# Virtual environments
+# ----------------------
+venv/
+.env/
+.envrc/
+.venv/
+env/
+ENV/
+
+# ----------------------
+# Distribution / packaging
+# ----------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ----------------------
+# Logs & temp files
+# ----------------------
+*.log
+*.out
+*.err
+*.tmp
+
+# ----------------------
+# Jupyter Notebook checkpoints (if you use notebooks)
+# ----------------------
+.ipynb_checkpoints/
+
+# ----------------------
+# IDE / Editor files
+# ----------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ----------------------
+# OS files
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Simulation outputs (IMPORTANT for your project)
+# ----------------------
+results/
+outputs/
+*.csv
+*.json
+
+# (optional) if you generate plots
+*.png
+*.jpg
+*.jpeg
