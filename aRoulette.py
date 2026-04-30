@@ -1,6 +1,6 @@
 import random as rand
 #Class for a game of American Roulette
-class A_Roulette(Gambler):
+class A_Roulette():
 
     def __init__(self, bets = []):
         #37 represents 00
