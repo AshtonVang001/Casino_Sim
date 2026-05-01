@@ -22,22 +22,32 @@ class Simulation(Rules):
     def play(self):
         r = Rules(10)
         deck = r.deck;
-        # r.money = int(input("Enter your buy in: "))
-        # bet = int(input("Enter bet: "));
+        willPlay = str(input("Would you like to play y/n?"))
 
-        #deal cards
-        playerFirstCard = random.choice(deck)
-        deck.remove(playerFirstCard)
-        dealerFirstCard = random.choice(deck)
-        deck.remove(dealerFirstCard);
-        playerSecondCard = random.choice(deck)
-        deck.remove(playerSecondCard);
-        dealerSecondCard = random.choice(deck)
-        deck.remove(dealerSecondCard);
+        if willPlay == "y":
+            r.money = int(input("Enter your buy in: "))
+            bet = int(input("Enter bet: "));
 
-        playersCards = [playerFirstCard, playerSecondCard];
-        dealersCards = [dealerFirstCard, "hidden"]; 
+            #deal cards
+            playerFirstCard = random.choice(deck)
+            deck.remove(playerFirstCard)
+            dealerFirstCard = random.choice(deck)
+            deck.remove(dealerFirstCard);
+            playerSecondCard = random.choice(deck)
+            deck.remove(playerSecondCard);
+            dealerSecondCard = random.choice(deck)
+            deck.remove(dealerSecondCard);
 
+            
+            playersCards = [playerFirstCard, playerSecondCard];
+            dealersCards = [dealerFirstCard, "hidden"]; 
+
+            print("Your cards: ")
+            print(playersCards)
+            print("Dealers cards: ")
+            print(dealersCards)
+
+            keepPlaying = str(input("Would you like to hit or stand? Enter 'h' or 's'"))
 
 
 
