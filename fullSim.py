@@ -1,7 +1,7 @@
 from blackJackRules import Rules as BlackjackRules
-from rouletteRules import A_Roulette as RouletteRules
-from slotsRules import SlotsRules
-from pokerRules import TexasHoldemRules
+from aRoulette import A_Roulette as RouletteRules
+from slotRules import SlotsRules
+from thPoker import TexasHoldemRules
 import random
 
 # unified simulation class
