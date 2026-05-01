@@ -21,3 +21,7 @@ class Simulation(Rules):
     #if neither bust whoever has the highest number wins
     #if player wins they 2x their money
     #if player hits 21 w first 2 cards it is a 3:2 payout
+
+    def play(self):
+        bet = int(input("Enter bet: "));
+        
