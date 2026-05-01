@@ -1,12 +1,9 @@
-from blackjack.blackJackRules import Rules
+from blackJackRules import Rules
+import random
 
 class Simulation(Rules):
-    def __init__ (self, test):
+    def __init__ (self, test = 0):
         self.test = test
-
-
-    r = Rules()
-    r.money = int(input("Enter your buy in: "))
 
     #user places bet
     #dealer deals 2 cards to player (face up) and 2 cards to himself (1 face up and 1 face down)
@@ -23,5 +20,27 @@ class Simulation(Rules):
     #if player hits 21 w first 2 cards it is a 3:2 payout
 
     def play(self):
-        bet = int(input("Enter bet: "));
-        
+        r = Rules(10)
+        deck = r.deck;
+        # r.money = int(input("Enter your buy in: "))
+        # bet = int(input("Enter bet: "));
+
+        #deal cards
+        playerFirstCard = random.choice(deck)
+        deck.remove(playerFirstCard)
+        dealerFirstCard = random.choice(deck)
+        deck.remove(dealerFirstCard);
+        playerSecondCard = random.choice(deck)
+        deck.remove(playerSecondCard);
+        dealerSecondCard = random.choice(deck)
+        deck.remove(dealerSecondCard);
+
+        playersCards = [playerFirstCard, playerSecondCard];
+        dealersCards = [dealerFirstCard, "hidden"]; 
+
+
+
+
+player = Simulation();
+player.play();
+
