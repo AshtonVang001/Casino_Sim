@@ -29,14 +29,14 @@ class Simulation(Rules):
             bet = int(input("Enter bet: "));
 
             #deal cards
-            playerFirstCard = random.choice(deck)
-            deck.remove(playerFirstCard)
-            dealerFirstCard = random.choice(deck)
-            deck.remove(dealerFirstCard);
-            playerSecondCard = random.choice(deck)
-            deck.remove(playerSecondCard);
-            dealerSecondCard = random.choice(deck)
-            deck.remove(dealerSecondCard);
+            playerFirstCard = random.choice(list(deck.values()))
+            deck.pop(playerFirstCard)
+            dealerFirstCard = random.choice(list(deck).values())
+            deck.pop(dealerFirstCard);
+            playerSecondCard = random.choice(list(deck).values())
+            deck.pop(playerSecondCard);
+            dealerSecondCard = random.choice(list(deck).values())
+            deck.pop(dealerSecondCard);
 
             
             playersCards = [playerFirstCard, playerSecondCard];
