@@ -29,25 +29,25 @@ class Simulation(Rules):
             bet = int(input("Enter bet: "));
 
             #deal cards
-            playerFirstCard = random.choice(list(deck.values()))
+            playerFirstCard = random.choice(list(deck.keys()))
             deck.pop(playerFirstCard)
-            dealerFirstCard = random.choice(list(deck).values())
+            dealerFirstCard = random.choice(list(deck.keys()))
             deck.pop(dealerFirstCard);
-            playerSecondCard = random.choice(list(deck).values())
+            playerSecondCard = random.choice(list(deck.keys()))
             deck.pop(playerSecondCard);
-            dealerSecondCard = random.choice(list(deck).values())
+            dealerSecondCard = random.choice(list(deck.keys()))
             deck.pop(dealerSecondCard);
 
             
             playersCards = [playerFirstCard, playerSecondCard];
             dealersCards = [dealerFirstCard, "hidden"]; 
-
+            
             print("Your cards: ")
             print(playersCards)
             print("Dealers cards: ")
             print(dealersCards)
 
-            keepPlaying = str(input("Would you like to hit or stand? Enter 'h' or 's'"))
+            # keepPlaying = str(input("Would you like to hit or stand? Enter 'h' or 's'"))
 
 
 
