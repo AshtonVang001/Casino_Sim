@@ -1,4 +1,5 @@
 from blackJackRules import Rules
+import time
 import random
 
 class Simulation(Rules):
@@ -26,6 +27,7 @@ class Simulation(Rules):
 
         if willPlay == "y":
             r.money = int(input("Enter your buy in: "))
+            money = r.money;
             bet = int(input("Enter bet: "));
 
             #deal cards
@@ -51,20 +53,48 @@ class Simulation(Rules):
 
             print("Your cards: ")
             print(playersCards)
+            print("Players value: ")
+            playerTotal = playerFirstCardVal + playerSecondCardVal;
+            print(playerTotal, "\n")
+            time.sleep(5)
 
             print("Dealers cards: ")
-            print(dealersCards)
+            print(dealersCards, "\n")
+            time.sleep(5)
 
-            print("Players value: ")
-            print(playerFirstCardVal + playerSecondCardVal)
+            if playerTotal == 21:
+                print("You hit blackjack! \n")
+                time.sleep(5)
+                dealersCards = [dealerFirstCard, dealerSecondCard];
+                print("Dealers cards: ")
+                print(dealersCards)
+                print("Dealers value: ")
+                dealerTotal = dealerFirstCardVal + dealerSecondCardVal
+                print(dealerTotal, "\n");
+                time.sleep(5);
+                if dealerTotal == 21:
+                    print("It's a tie! You get your money back!")
+                    print("You now have a total of $", money);
+                else:
+                    print("You win!")
+                    winnings = bet * 1.5
+                    print("You won $", winnings);
+                    money += winnings;
+                    print("You now have a total of $", money);
 
             #case here
             
 
-            keepPlaying = str(input("Would you like to hit or stand? Enter 'h' or 's'"))
+            # keepPlaying = str(input("Would you like to hit or stand? Enter 'h' or 's'"))
+
+            # match keepPlaying:
+            #     case playerTotal if playerTotal == 21:
+            #         print("You hit 21!")
+            #     case playerTotal
             
-            print("Dealers value: ")
-            print(dealerFirstCardVal + dealerSecondCardVal);
+            # print("Dealers value: ")
+            # dealerTotal = dealerFirstCardVal + dealerSecondCardVal
+            # print(dealerTotal);
             
 
 
