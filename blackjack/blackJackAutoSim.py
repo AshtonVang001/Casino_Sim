@@ -63,7 +63,7 @@ class AutoSimulation(Rules):
             return "loss"
         else:
             return "tie"
-   self.moneyHistory.append(self.money)
+        self.moneyHistory.append(self.money)
 
     def run(self):
         while self.bet <= self.money < self.goal:
