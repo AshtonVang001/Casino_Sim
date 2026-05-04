@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 from aRouletteAutoSim import AutoSimulation
 
 SIMULATIONS = 10_000
@@ -42,6 +43,16 @@ def run_simulations():
     print(f"  Max rounds played:   {max_rounds:>10,}")
     print(f"  Avg final balance:   ${avg_balance:>9.2f}")
     print("=" * 45)
+
+    plt.title("10 Player Bank Accounts")
+    plt.ylabel("Money")
+    plt.xlabel("Rounds")
+    x = []           
+
+    for _, run in enumerate(moneyHist):
+        x = range(len(run))
+        plt.plot(x, run, alpha = .7, linewidth=1)
+    plt.show()
 
 
 if __name__ == "__main__":

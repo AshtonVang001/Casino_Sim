@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 from slotsAutoSim import AutoSimulation
 
 SIMULATIONS = 10_000
@@ -7,11 +8,18 @@ BET = 10
 
 
 def run_simulations():
+    moneyHist = [[]]
+    results = [[]]
     results = [
-        AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET).run()
-        for _ in range(SIMULATIONS)
+        AutoSimulation(i, starting_money=STARTING_MONEY, goal=GOAL, bet=BET).run()
+        for i in range(SIMULATIONS)
     ]
-
+    #i know this is gross but I'm desperate. I need SOME data for the graph, i don't care if it's right...
+    moneyHist = [
+        AutoSimulation(i, starting_money=STARTING_MONEY, goal=GOAL, bet=BET).moneyHistory()
+        for i in range(SIMULATIONS)
+    ]
+    
     wins = sum(1 for r in results if r["reached_goal"])
     losses = SIMULATIONS - wins
     win_rate = wins / SIMULATIONS * 100
@@ -41,6 +49,17 @@ def run_simulations():
     print(f"  Avg final balance:   ${avg_balance:>9.2f}")
     print("=" * 45)
 
+    plt.title("10 Player Bank Accounts")
+    plt.ylabel("Money")
+    plt.xlabel("Rounds")
+    x = []           
+
+    print(AutoSimulation(10, starting_money=STARTING_MONEY, goal=GOAL, bet=BET).moneyHistory())
+
+    for _, run in enumerate(moneyHist):
+        x = range(len(run))
+        plt.plot(x, run, alpha = .7, linewidth=1)
+    plt.show()
 
 if __name__ == "__main__":
     run_simulations()

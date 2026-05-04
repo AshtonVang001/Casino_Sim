@@ -15,6 +15,7 @@ def run_simulations():
     #    AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET).run()
     #    for _ in range(SIMULATIONS)
     #]
+    results = []
     for _ in range(SIMULATIONS):
         sim = AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET)
         results.append(sim.run())

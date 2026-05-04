@@ -1,7 +1,7 @@
-from blackJackRules import Rules as BlackjackRules
-from aRoulette import A_Roulette as RouletteRules
-from slotRules import SlotsRules
-from thPoker import TexasHoldemRules
+from blackjack.blackJackRules import Rules as BlackjackRules
+from roulette.aRoulette import A_Roulette as RouletteRules
+from slots.slotRules import SlotsRules
+from poker.thPoker import TexasHoldemRules
 import random
 
 # unified simulation class
@@ -17,12 +17,12 @@ class CasinoSimulation:
     # abstraction of each game
     def play_blackjack(self, bet):
         outcome = random.choices(
-            ["win", "lose", "push"],
-            weights=[
-                self.blackjack.playerP,
-                self.blackjack.dealerP,
-                self.blackjack.pushP
-            ]
+            ["win", "lose", "push"]
+            #weights=[
+            #    self.blackjack.playerP,
+            #    self.blackjack.dealerP,
+            #    self.blackjack.pushP
+            #]
         )[0]
 
         if outcome == "win":
@@ -32,7 +32,7 @@ class CasinoSimulation:
         return 0
 
     def play_roulette(self, bet):
-        return self.roulette.Play([random.randrange(37)], bet)
+        return self.roulette.resolve_bet([random.randrange(37)], bet)
 
     def play_slots(self, bet):
         _, result = self.slots.play(bet)

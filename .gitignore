@@ -6,6 +6,11 @@ __pycache__/
 *$py.class
 
 # ----------------------
+# I hope this don't mess anything up - Jared
+# ----------------------
+__init__/
+
+# ----------------------
 # Virtual environments
 # ----------------------
 venv/
