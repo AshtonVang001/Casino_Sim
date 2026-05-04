@@ -10,8 +10,12 @@ STRATEGY = "red"
 
 def run_simulations():
     results = [
-        AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET, strategy=STRATEGY).run()
-        for _ in range(SIMULATIONS)
+        AutoSimulation(i, starting_money=STARTING_MONEY, goal=GOAL, bet=BET, strategy=STRATEGY).run()
+        for i in range(SIMULATIONS)
+    ]
+    moneyHist = [
+        AutoSimulation(i, starting_money=STARTING_MONEY, goal=GOAL, bet=BET, strategy=STRATEGY).moneyHistory()
+        for i in range(SIMULATIONS)
     ]
 
     wins = sum(1 for r in results if r["reached_goal"])

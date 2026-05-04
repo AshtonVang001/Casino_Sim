@@ -7,13 +7,14 @@ class AutoSimulation(Rules):
     hit if hand total <= 16, stand at 17+.
     """
 
-    def __init__(self, starting_money=100, goal=200, bet=10):
+    def __init__(self, i, starting_money=100, goal=200, bet=10):
         super().__init__(money=starting_money)
+        self.i = i
         self.starting_money = starting_money
         self.goal = goal
         self.bet = bet
         self.hands_played = 0
-        self.moneyHistory = [self.starting_money]
+        self.moneyHist = []
 
     def _reset_deck(self):
         self.__init__(starting_money=self.money, goal=self.goal, bet=self.bet)
@@ -68,6 +69,8 @@ class AutoSimulation(Rules):
     def run(self):
         while self.bet <= self.money < self.goal:
             self.play_hand()
+            if (self.i % 1000) == 0:
+                self.moneyHist.append(self.money)
 
         reached_goal = self.money >= self.goal
         return {
@@ -75,3 +78,7 @@ class AutoSimulation(Rules):
             "final_balance": self.money,
             "hands_played": self.hands_played,
         }
+    
+    def moneyHistory(self):
+        self.run()
+        return self.moneyHist

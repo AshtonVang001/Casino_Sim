@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 from blackJackAutoSim import AutoSimulation
 
 SIMULATIONS = 10_000
@@ -8,21 +9,18 @@ BET = 10
 
 def run_simulations():
     # Empty array to hold each game's money 
-    run_arr = []
+    moneyHist = []
 
-    #commenting out just in case my edited version breaks
-    #results = [
-    #    AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET).run()
-    #    for _ in range(SIMULATIONS)
-    #]
-    results = []
-    for _ in range(SIMULATIONS):
-        sim = AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET)
-        results.append(sim.run())
-        run_arr.append(sim.moneyHistory)
+    results = [
+        AutoSimulation(i, starting_money=STARTING_MONEY, goal=GOAL, bet=BET).run()
+        for i in range(SIMULATIONS)
+    ]
+    moneyHist = [
+        AutoSimulation(i, starting_money=STARTING_MONEY, goal=GOAL, bet=BET).moneyHistory()
+        for i in range(SIMULATIONS)
+    ]
 
         
-    
     wins = sum(1 for r in results if r["reached_goal"])
     losses = SIMULATIONS - wins
     win_rate = wins / SIMULATIONS * 100
@@ -52,6 +50,16 @@ def run_simulations():
     print(f"  Max hands played:    {max_hands:>10,}")
     print(f"  Avg final balance:   ${avg_balance:>9.2f}")
     print("=" * 45)
+
+    plt.title("10 Player Bank Accounts")
+    plt.ylabel("Money")
+    plt.xlabel("Rounds")
+    x = []           
+
+    for _, run in enumerate(moneyHist):
+        x = range(len(run))
+        plt.plot(x, run, alpha = .7, linewidth=1)
+    plt.show()
 
 
 if __name__ == "__main__":

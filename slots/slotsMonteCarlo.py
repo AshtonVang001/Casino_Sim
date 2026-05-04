@@ -54,8 +54,6 @@ def run_simulations():
     plt.xlabel("Rounds")
     x = []           
 
-    print(AutoSimulation(10, starting_money=STARTING_MONEY, goal=GOAL, bet=BET).moneyHistory())
-
     for _, run in enumerate(moneyHist):
         x = range(len(run))
         plt.plot(x, run, alpha = .7, linewidth=1)

@@ -23,7 +23,7 @@ class AutoSimulation(SlotsRules):
     def run(self):
         while self.bet <= self.money < self.goal:
             self.play_round()
-            if (self.i % 2) == 0:
+            if (self.i % 1000) == 0:
                 self.moneyHist.append(self.money)
 
         reached_goal = self.money >= self.goal
@@ -33,4 +33,5 @@ class AutoSimulation(SlotsRules):
             "rounds_played": self.rounds_played,
         }
     def moneyHistory(self):
+        self.run()
         return self.moneyHist
