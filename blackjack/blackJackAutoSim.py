@@ -13,6 +13,7 @@ class AutoSimulation(Rules):
         self.goal = goal
         self.bet = bet
         self.hands_played = 0
+        self.moneyHistory = [self.starting_money]
 
     def _reset_deck(self):
         self.__init__(starting_money=self.money, goal=self.goal, bet=self.bet)
@@ -62,6 +63,7 @@ class AutoSimulation(Rules):
             return "loss"
         else:
             return "tie"
+   self.moneyHistory.append(self.money)
 
     def run(self):
         while self.bet <= self.money < self.goal:

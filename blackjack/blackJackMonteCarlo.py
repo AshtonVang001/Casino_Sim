@@ -7,14 +7,25 @@ BET = 10
 
 
 def run_simulations():
-    results = [
-        AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET).run()
-        for _ in range(SIMULATIONS)
-    ]
+    # Empty array to hold each game's money 
+    run_arr = []
 
+    #commenting out just in case my edited version breaks
+    #results = [
+    #    AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET).run()
+    #    for _ in range(SIMULATIONS)
+    #]
+    for _ in range(SIMULATIONS):
+        sim = AutoSimulation(starting_money=STARTING_MONEY, goal=GOAL, bet=BET)
+        results.append(sim.run())
+        run_arr.append(sim.moneyHistory)
+
+        
+    
     wins = sum(1 for r in results if r["reached_goal"])
     losses = SIMULATIONS - wins
     win_rate = wins / SIMULATIONS * 100
+
 
     all_hands = [r["hands_played"] for r in results]
     all_balances = [r["final_balance"] for r in results]
